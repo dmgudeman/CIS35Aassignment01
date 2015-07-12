@@ -1,7 +1,5 @@
 import jdk.internal.org.xml.sax.SAXException;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -17,12 +15,17 @@ public class Main {
         System.out.println("Hello World");
 
         String sfile = "/Users/davidgudeman/Documents/workspace/CIS35A_temp/Coordinates.xml";
-        XMLReader2 xmlReader2 = new XMLReader2(sfile);
-        Document doc = xmlReader2.ReadXML();
-        NodeList nodeList = xmlReader2.GetNodes(doc);
-        xmlReader2.showNodeList(nodeList);
-        Node node = null;
-        Store<Node> store = new Store<Node>();
+        XMLReader xmlReader = new XMLReader(sfile);
+        Document doc = xmlReader.ReadXML();
+        NodeList nodeList = xmlReader.GetNodes(doc);       // extract the nodes into a NodeList
+        xmlReader.showNodeList(nodeList);
+        Search search = new Search(nodeList);
+        search.template(nodeList, "City");
+
+       /* Node node = null;
+        Store<Node> store = new Store<Node>(nodeList);
+        System.out.println(store.toString());
+        store.process();
        for (int i = 0; i<nodeList.getLength(); i++)
        {
            Node l = nodeList.item(i);
@@ -44,6 +47,6 @@ public class Main {
            }
        }
 
-
+       */
     }
 }

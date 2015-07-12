@@ -1,83 +1,90 @@
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+/**
+ * Created by davidgudeman on 7/9/15.
+ */
+import jdk.internal.org.xml.sax.SAXException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
+
+
+import java.io.IOException;
 public class XMLReader
 {
-    public Document ReadXML(String sfile) throws ParserConfigurationException, SAXException, IOException
+
+    public Document doc;
+    public String sfile;
+
+    public XMLReader(String sfile) throws ParserConfigurationException, IOException, SAXException {
+        this.sfile = sfile;
+    }
+
+    public Document ReadXML() throws ParserConfigurationException, IOException, SAXException
     {
-        File file = new File(sfile);
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder db = dbf.newDocumentBuilder();
-        Document doc = db.parse(file);
+        try {
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            doc = dBuilder.parse(sfile);
+
+            doc.getDocumentElement().normalize();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return doc;
     }
 
-    public NodeList GetNodes(Document opendoc, String selement)
+    public NodeList GetNodes(Document doc)
     {
-        opendoc.getDocumentElement().normalize();
-        NodeList nodelist = opendoc.getElementsByTagName(selement);
-        System.out.println(nodelist.getLength());
-
-
-        return nodelist;
-    }
-
-    public Node GetNode(NodeList nodelist, int index)
-    {
-        Node node = null;
-        int length = nodelist.getLength();
-        if (index > -1 && index < length)
-            node = nodelist.item(index);
-        return node;
-    }
-
-    public ArrayList<String> GetNodeStrings(NodeList nodelist, String[] selements)
-    {
-        ArrayList<String> slist = new ArrayList<String>();
-        for(int s=0; s<nodelist.getLength() ; s++)
+        NodeList nList = doc.getElementsByTagName("Location");
+        System.out.println(nList.getLength());
+        Element root = doc.getDocumentElement();
+        System.out.println("root = " + root);
+        System.out.println("root.getTagName()   " + root.getTagName());
+        System.out.println("root.getAttributes()   " + root.getAttributes());
+       // NodeList nodeList = root.getChildNodes();
+        for (int i = 0; i < nList.getLength(); i++)
         {
-            Node firstNode = GetNode(nodelist,s);
-            if(firstNode.getNodeType() == Node.ELEMENT_NODE)
+            Node child = nList.item(i);
+            if (child.getNodeType() == Node.ELEMENT_NODE)
             {
-                Element element = (Element)firstNode;
-                for (int x=0; x<selements.length; x++)
-                {
-                    NodeList nlist = element.getElementsByTagName(selements[x]);
-                    Element item = (Element)nlist.item(0);
-                    NodeList tlist = item.getChildNodes();
-                    slist.add(((Node)tlist.item(0)).getNodeValue().trim());
-                }
+                Element eElement = (Element) child;
+
+                System.out.println("Latitude : " + eElement.getElementsByTagName("Latitude").item(0).getTextContent());
+                System.out.println(child);
             }
         }
-        return slist;
+
+        System.out.println("----------------------------");
+        return nList;
     }
 
-    public boolean TestXML(String sfile,String selement,String[] sfields) throws ParserConfigurationException, SAXException, IOException
+    public void showNodeList(NodeList nodeList)
     {
-        boolean breturn = false;
-        try
-        {
-            Document doc = ReadXML(sfile);
-            NodeList nodelist = GetNodes(doc,selement);
-            ArrayList<String> slist = GetNodeStrings(nodelist,sfields);
-            for (String s : slist)
-                System.out.println(s);
+        try {
+            for (int i = 0; i < nodeList.getLength(); i++)
+            {
+                Node child = nodeList.item(i);
+                if (child.getNodeType() == Node.ELEMENT_NODE)
+                {
+                    Element eElement = (Element) child;
+
+                    System.out.println("Latitude : " + eElement.getElementsByTagName("Latitude").item(0).getTextContent());
+                    System.out.println("Longitude : " + eElement.getElementsByTagName("Longitude").item(0).getTextContent());
+                    System.out.println("City : " + eElement.getElementsByTagName("City").item(0).getTextContent());
+                    System.out.println("State : " + eElement.getElementsByTagName("State").item(0).getTextContent());
+                }
+            }
+
+            System.out.println("----------------------------");
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        finally
-        {
-            //System.out.println("Error in xml file: " + sfile);
-        }
-        breturn = true;
-        return breturn;
     }
 }
