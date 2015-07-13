@@ -54,9 +54,7 @@ public class Store<T>
                     if(n.getNodeType()==Node.ELEMENT_NODE)
                     {
                         Element place = (Element) n;
-                   //     System.out.println(place.getTagName() + " = " +place.getTextContent());
                         store.storage.add(n);
-                   //     System.out.println("store length = " + store.storage.size());
                     }
                 }
             }

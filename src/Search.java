@@ -44,6 +44,7 @@ public class Search
             Node l = nodeList.item(i);
             if (l.getNodeType() == Node.ELEMENT_NODE)
             {
+
                 Element location = (Element) l;
                 NodeList dataList = location.getChildNodes();
                 for (int j = 0; j < dataList.getLength(); j++)
@@ -51,33 +52,26 @@ public class Search
                     Node n = dataList.item(j);
                     if (n.getNodeType() == Node.ELEMENT_NODE)
                     {
-                        Element place = (Element) n;
+
+                            Element place = (Element) n;
                         if (place.getTagName() == pattern)
-                           // System.out.println(place.getTagName() + " = " + place.getTextContent());
+
                             items.put(place.getTextContent(), place.getTagName());
                     }
                 }
             }
         }
-        ArrayList<String> sortedItemList = new ArrayList(items.keySet());
-        Collections.sort(sortedItemList);
-
-        for (int i = 0; i < sortedItemList.size(); i++)
-        {
-           // System.out.println(sortedItemList.get(i));
-            k++;
-          //  System.out.println("type : " + items.get(key));
-        }
-       // System.out.println("Total : " + k);
-        return sortedItemList;
+        ArrayList<String> sortedCityStrings = new ArrayList(items.keySet());
+        Collections.sort(sortedCityStrings);
+        return sortedCityStrings;
     }
 
 
     public ArrayList sortedNodes(NodeList nodeList, ArrayList sortedItemList )
     {
 
-        ArrayList<Node> finalList = new ArrayList<>();
-        int q = 0;
+        ArrayList<Node> cityList = new ArrayList<>();
+        ArrayList<Node> cityStateList = new ArrayList<>();
         for (int i = 0; i < sortedItemList.size(); i++)
         {
             String pattern = (String) sortedItemList.get(i);
@@ -91,16 +85,13 @@ public class Search
                     String match = eElement.getElementsByTagName("City").item(0).getTextContent();
                     if (match.compareTo(pattern)== 0)
                     {
-                        finalList.add(child);
-                        //System.out.println("COMPARISON " + match);
-                        q++;
+                        cityList.add(child);
                     }
                 }
             }
 
         }
-        System.out.println("total = " + q );
-        return finalList;
+        return cityList;
     }
     public void showNodeList(NodeList nodeList)
     {
