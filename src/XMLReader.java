@@ -44,11 +44,11 @@ public class XMLReader
     public NodeList GetNodes(Document doc)
     {
         NodeList nList = doc.getElementsByTagName("Location");
-        System.out.println(nList.getLength());
+      //  System.out.println(nList.getLength());
         Element root = doc.getDocumentElement();
-        System.out.println("root = " + root);
-        System.out.println("root.getTagName()   " + root.getTagName());
-        System.out.println("root.getAttributes()   " + root.getAttributes());
+      //  System.out.println("root = " + root);
+      //  System.out.println("root.getTagName()   " + root.getTagName());
+     //   System.out.println("root.getAttributes()   " + root.getAttributes());
        // NodeList nodeList = root.getChildNodes();
         for (int i = 0; i < nList.getLength(); i++)
         {
@@ -57,12 +57,12 @@ public class XMLReader
             {
                 Element eElement = (Element) child;
 
-                System.out.println("Latitude : " + eElement.getElementsByTagName("Latitude").item(0).getTextContent());
-                System.out.println(child);
+            //    System.out.println("Latitude : " + eElement.getElementsByTagName("Latitude").item(0).getTextContent());
+            //    System.out.println(child);
             }
         }
 
-        System.out.println("----------------------------");
+       // System.out.println("----------------------------");
         return nList;
     }
 

@@ -64,11 +64,11 @@ public class Search
 
         for (int i = 0; i < sortedItemList.size(); i++)
         {
-            System.out.println(sortedItemList.get(i));
+           // System.out.println(sortedItemList.get(i));
             k++;
           //  System.out.println("type : " + items.get(key));
         }
-        System.out.println("Total : " + k);
+       // System.out.println("Total : " + k);
         return sortedItemList;
     }
 
@@ -92,7 +92,7 @@ public class Search
                     if (match.compareTo(pattern)== 0)
                     {
                         finalList.add(child);
-                        System.out.println("COMPARISON " + match);
+                        //System.out.println("COMPARISON " + match);
                         q++;
                     }
                 }
@@ -125,6 +125,13 @@ public class Search
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public int binarySearch(ArrayList arrayList, String item)
+    {
+        int index;
+        index = Collections.binarySearch(arrayList, item);
+        return index;
     }
 }
 

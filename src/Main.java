@@ -15,21 +15,23 @@ public class Main {
 
     public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
 
-        System.out.println("Hello World");
 
         String sfile = "/Users/davidgudeman/Documents/workspace/CIS35A_temp/Coordinates.xml";
         XMLReader xmlReader = new XMLReader(sfile);
         Document doc = xmlReader.ReadXML();
         NodeList nodeList = xmlReader.GetNodes(doc);       // extract the nodes into a NodeList
-        xmlReader.showNodeList(nodeList);
-        System.out.println("xmlReader.showNodeList(nodeList)");
+    //    xmlReader.showNodeList(nodeList);
+       // System.out.println("xmlReader.showNodeList(nodeList)");
         Search search = new Search(nodeList);
-        search.template(nodeList, "City");
-        System.out.println("search.template(nodeList, \"City\");");
+        search.template(nodeList, "City");              // an arrayList of only the city names
+     //   System.out.println("search.template(nodeList, \"City\");");
 
         search.sortedNodes(nodeList, search.template(nodeList, "City"));
 
-        xmlReader.showArrayList(search.sortedNodes(nodeList, search.template(nodeList, "City")));
+      //  xmlReader.showArrayList(search.sortedNodes(nodeList, search.template(nodeList, "City")));
+        System.out.println("Index of Worcester is  " + search.binarySearch(search.template(nodeList, "City"), "Worcester"));
+        System.out.println("-----------------------------------------------");
+       // System.out.println(search.template(nodeList, "City").get(1085));
 
      //   xmlReader.showNodeList(finalNodeList);
 
