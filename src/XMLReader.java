@@ -14,6 +14,9 @@ import java.io.File;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class XMLReader
 {
 
@@ -77,6 +80,31 @@ public class XMLReader
                     System.out.println("Longitude : " + eElement.getElementsByTagName("Longitude").item(0).getTextContent());
                     System.out.println("City : " + eElement.getElementsByTagName("City").item(0).getTextContent());
                     System.out.println("State : " + eElement.getElementsByTagName("State").item(0).getTextContent());
+                }
+            }
+
+            System.out.println("----------------------------");
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void showArrayList(ArrayList<Node> list)
+    {
+        try {
+            for (int i = 0; i < list.size(); i++)
+            {
+                Node child = list.get(i);
+                if (child.getNodeType() == Node.ELEMENT_NODE)
+                {
+                    Element eElement = (Element) child;
+
+                    System.out.println("Latitude : " + eElement.getElementsByTagName("Latitude").item(0).getTextContent());
+                    System.out.println("Longitude : " + eElement.getElementsByTagName("Longitude").item(0).getTextContent());
+                    System.out.println("City : " + eElement.getElementsByTagName("City").item(0).getTextContent());
+                    System.out.println("State : " + eElement.getElementsByTagName("State").item(0).getTextContent());
+                    System.out.println("\n");
                 }
             }
 

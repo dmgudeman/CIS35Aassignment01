@@ -5,6 +5,9 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.lang.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by davidgudeman on 7/8/15.
  */
@@ -19,8 +22,16 @@ public class Main {
         Document doc = xmlReader.ReadXML();
         NodeList nodeList = xmlReader.GetNodes(doc);       // extract the nodes into a NodeList
         xmlReader.showNodeList(nodeList);
+        System.out.println("xmlReader.showNodeList(nodeList)");
         Search search = new Search(nodeList);
         search.template(nodeList, "City");
+        System.out.println("search.template(nodeList, \"City\");");
+
+        search.sortedNodes(nodeList, search.template(nodeList, "City"));
+
+        xmlReader.showArrayList(search.sortedNodes(nodeList, search.template(nodeList, "City")));
+
+     //   xmlReader.showNodeList(finalNodeList);
 
        /* Node node = null;
         Store<Node> store = new Store<Node>(nodeList);
