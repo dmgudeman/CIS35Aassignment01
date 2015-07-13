@@ -105,5 +105,25 @@ public class XMLReader
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+    public void showNode(NodeList nodeList, int index, String tagname)
+    {
+        try {
+                Node child = nodeList.item(index);
+                if (child.getNodeType() == Node.ELEMENT_NODE)
+                {
+                    Element eElement = (Element) child;
+                    if (eElement.getElementsByTagName(tagname) != null)
+
+                    System.out.println(tagname + " : " + eElement.getElementsByTagName(tagname).item(0).getTextContent());
+                }
+
+            System.out.println("------------*****************----------------");
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.lang.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by davidgudeman on 7/8/15.
@@ -15,50 +16,24 @@ public class Main {
 
     public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
 
+        String city1, city2;
+
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter first City");
+        city1 =in.nextLine();
+
+        System.out.println("Enter second City");
+        city2 = in.nextLine();
+
 
         String sfile = "/Users/davidgudeman/Documents/workspace/CIS35A_temp/Coordinates.xml";
         XMLReader xmlReader = new XMLReader(sfile);
         Document doc = xmlReader.ReadXML();
         NodeList nodeList = xmlReader.GetNodes(doc);       // extract the nodes into a NodeList
-                //    xmlReader.showNodeList(nodeList);
-                // System.out.println("xmlReader.showNodeList(nodeList)");
         Search search = new Search(nodeList);
-       // search.template(nodeList, "State");              // an arrayList of only the city names
-                //   System.out.println("search.template(nodeList, \"City\");");
-
-        //search.sortedNodes(nodeList, search.template(nodeList, "City"));
         xmlReader.showArrayList(search.sortedNodes(nodeList, search.template(nodeList, "City")));
-        System.out.println("Index of Worcester is  " + search.binarySearch(search.template(nodeList, "City"), "Worcester"));
-        System.out.println("-----------------------------------------------");
-                // System.out.println(search.template(nodeList, "City").get(1085));
-
-                //   xmlReader.showNodeList(finalNodeList);
-
-       /* Node node = null;
-        Store<Node> store = new Store<Node>(nodeList);
-        System.out.println(store.toString());
-        store.process();
-       for (int i = 0; i<nodeList.getLength(); i++)
-       {
-           Node l = nodeList.item(i);
-           if (l.getNodeType()==Node.ELEMENT_NODE)
-           {
-               Element location = (Element) l;
-               NodeList dataList = location.getChildNodes();
-               for (int j=0; j<dataList.getLength(); j++)
-               {
-                   Node n = dataList.item(j);
-                   if(n.getNodeType()==Node.ELEMENT_NODE)
-                   {
-                       Element place = (Element) n;
-                       System.out.println(place.getTagName() + " = " +place.getTextContent());
-                       store.storage.add(n);
-                       System.out.println("store length = " + store.storage.size());
-                   }
-               }
-           }
-       }
-
-       */
+     //   System.out.println(Math.round(Calculate.haversine(44.38, 46.6, 100.28, 94.32)) + " miles");
+     //   xmlReader.showNode(nodeList, 1088, "Latitude");
+        Calculate.getDistance(nodeList, city1, city2);
     }
 }

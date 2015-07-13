@@ -124,5 +124,15 @@ public class Search
         index = Collections.binarySearch(arrayList, item);
         return index;
     }
+    public double getLatitude(NodeList nodeList, int index)
+    {
+       Node node = nodeList.item(index);
+
+        for (int i = 0; i < node.getChildNodes().getLength(); i++)
+        {
+          //  System.out.println(node.getChildNodes().item(1));
+        }
+       return 2.0;
+    }
 }
 
