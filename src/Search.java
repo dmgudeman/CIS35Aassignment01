@@ -33,6 +33,7 @@ public class Search
         this.nodeLists = nodeList;
     }
 
+    public <T extends Comparable>Search(){}
     public ArrayList template(NodeList nodeList, String pattern)
     {
         Store<Node> store = new Store<Node>(nodeList);
@@ -118,10 +119,10 @@ public class Search
         }
     }
 
-    public int binarySearch(ArrayList arrayList, String item)
+    public int binarySearch(ArrayList arrayList, String city)
     {
         int index;
-        index = Collections.binarySearch(arrayList, item);
+        index = Collections.binarySearch(arrayList, city);
         return index;
     }
     public double getLatitude(NodeList nodeList, int index)
@@ -133,6 +134,66 @@ public class Search
           //  System.out.println(node.getChildNodes().item(1));
         }
        return 2.0;
+    }
+    public ArrayList<Node> arrayListOfNodes(NodeList nodeList)
+    {
+        ArrayList arrayList = new ArrayList();
+        try {
+            for (int i = 0; i < nodeList.getLength(); i++)
+            {
+                Node child = nodeList.item(i);
+                if (child.getNodeType() == Node.ELEMENT_NODE)
+                {
+                    Element eElement = (Element) child;
+
+                    arrayList.add(child);
+                }
+            }
+
+            System.out.println("----------------------------");
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return arrayList;
+    }
+
+    public String specificDataString(NodeList nodeList, ArrayList<String> arraylist, int index, String latOrLong)
+    {
+        String cityName = arraylist.get(index);
+        String answer = "";
+        try {
+            for (int i = 0; i < nodeList.getLength(); i++)
+            {
+                Node child = nodeList.item(i);
+                if (child.getNodeType() == Node.ELEMENT_NODE)
+                {
+                    Element eElement = (Element) child;
+
+                   // if (cityName == eElement.getElementsByTagName("City").item(0).getTextContent())
+                 //   {
+                  //      answer = eElement.getElementsByTagName(latOrLong).item(0).getTextContent();
+                 //   }
+
+
+                    if (cityName == eElement.getElementsByTagName("City").item(0).getTextContent())
+                    {
+                        System.out.println("Longitude : " + eElement.getElementsByTagName(latOrLong).item(0).getTextContent());
+                        System.out.println("City : " + eElement.getElementsByTagName("City").item(0).getTextContent());
+                        System.out.println("LAT OR LONG =" + latOrLong);
+                    }
+
+                }
+            }
+
+            System.out.println("----------------------------");
+            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + answer);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return answer;
     }
 }
 

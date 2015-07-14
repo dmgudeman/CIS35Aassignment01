@@ -134,9 +134,9 @@ public class XMLReader
             {
                 Node child = list.get(index);
                 if (child.getNodeType() == Node.ELEMENT_NODE)
-                    if list.get(i).
                 {
                     Element eElement = (Element) child;
+                    if (eElement.getTagName() == tagName)
 
                     System.out.println("Latitude : " + eElement.getElementsByTagName(tagName).item(0).getTextContent());
                     System.out.println("\n");
