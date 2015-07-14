@@ -3,6 +3,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by davidgudeman on 7/12/15.
@@ -106,6 +108,29 @@ public class Search
         } catch (Exception e)
         {
             e.printStackTrace();
+        }
+        return answer;
+    }
+
+    public String parseInput(String line)
+    {
+        String answer = "";
+        String pattern = "(.*)(/)([A-Z]{2})";
+        line = line.trim();
+
+        // Create a Pattern object
+        Pattern s = Pattern.compile(pattern);
+
+        // Now create matcher object.
+        Matcher k = s.matcher(line);
+        if (k.find())
+        {
+            answer = k.group(1);
+        }
+        else
+        {
+            System.out.println("NO MATCH");
+
         }
         return answer;
     }
