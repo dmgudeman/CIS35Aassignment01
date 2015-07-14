@@ -34,16 +34,16 @@ public class Main {
 
         System.out.println("mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
        // System.out.println(xmlReader.obtainSpecificData(search.sortedNodes(nodeList, search.template(nodeList, "City")), 1, "Lattitude"));
-        xmlReader.showArrayList(search.sortedNodes(nodeList, search.template(nodeList, "City")));
+   //     xmlReader.showArrayList(search.sortedNodes(nodeList, search.template(nodeList, "City")));
 
        // xmlReader.showArrayList(search.arrayListOfNodes(nodeList));
 
 
      //   System.out.println(Math.round(Calculate.haversine(44.38, 46.6, 100.28, 94.32)) + " miles");
      //   xmlReader.showNode(nodeList, 1088, "Latitude");
-       // Calculate.getDistance(nodeList, city1, city2);
-        System.out.println(search.template(nodeList, "City"));
-        int cityIndex = search.binarySearch(search.template(nodeList,"City"), "Abilene");
-        System.out.println(search.specificDataString(nodeList, search.template(nodeList, "City"), cityIndex, "Longitude"));
+        Calculate.getDistance(nodeList, city1, city2);
+     //   System.out.println(search.template(nodeList, "City"));
+       // int cityIndex = search.binarySearch(search.template(nodeList,"City"), "Abilene");
+        //System.out.println(search.specificDataString(nodeList, search.template(nodeList, "City"), cityIndex, "Longitude"));
     }
 }

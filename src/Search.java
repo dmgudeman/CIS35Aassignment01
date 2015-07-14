@@ -179,9 +179,8 @@ public class Search
 
                     if (cityName == eElement.getElementsByTagName("City").item(0).getTextContent())
                     {
-                        System.out.println("Longitude : " + eElement.getElementsByTagName(latOrLong).item(0).getTextContent());
-                        System.out.println("City : " + eElement.getElementsByTagName("City").item(0).getTextContent());
-                        System.out.println("LAT OR LONG =" + latOrLong);
+                        answer =  eElement.getElementsByTagName(latOrLong).item(0).getTextContent();
+
                     }
 
                 }

@@ -27,7 +27,7 @@
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="123" selection-start-line="45" selection-start-column="8" selection-end-line="46" selection-end-column="123" />
+              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,8 +38,8 @@
       <file leaf-file-name="Calculate.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Calculate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45">
-              <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.575">
+              <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -87,7 +87,7 @@
         <entry file="file://$PROJECT_DIR$/src/Search.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="180" column="21" selection-start-line="180" selection-start-column="21" selection-end-line="180" selection-end-column="21" />
+              <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#561#562#0" expanded="true" />
@@ -120,8 +120,8 @@
         <option value="$PROJECT_DIR$/src/Storage.java" />
         <option value="$PROJECT_DIR$/src/Store.java" />
         <option value="$PROJECT_DIR$/src/XMLReader.java" />
-        <option value="$PROJECT_DIR$/src/Search.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Search.java" />
         <option value="$PROJECT_DIR$/src/Calculate.java" />
       </list>
     </option>
@@ -521,12 +521,12 @@
       <workItem from="1436463108207" duration="23390000" />
       <workItem from="1436730317323" duration="7934000" />
       <workItem from="1436746689607" duration="24154000" />
-      <workItem from="1436832299431" duration="9755000" />
+      <workItem from="1436832299431" duration="12423000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71991000" />
+    <option name="totallyTimeSpent" value="74659000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="341" width="1920" height="1080" extended-state="0" />
@@ -854,7 +854,7 @@
     <entry file="file://$PROJECT_DIR$/src/Search.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="180" column="21" selection-start-line="180" selection-start-column="21" selection-end-line="180" selection-end-column="21" />
+          <caret line="182" column="0" selection-start-line="182" selection-start-column="0" selection-end-line="182" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#561#562#0" expanded="true" />
@@ -867,7 +867,7 @@
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="123" selection-start-line="45" selection-start-column="8" selection-end-line="46" selection-end-column="123" />
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -876,8 +876,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Calculate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45">
-          <caret line="63" column="24" selection-start-line="63" selection-start-column="24" selection-end-line="63" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.575">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
