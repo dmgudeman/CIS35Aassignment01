@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
+ * CIS35A assignment01
  * Created by davidgudeman on 7/8/15.
  */
 public class Main
@@ -21,6 +22,7 @@ public class Main
         String city1, city2;
 
         Scanner in = new Scanner(System.in);
+
         System.out.println("Enter first City");
         city1 = in.nextLine();
 
@@ -34,7 +36,6 @@ public class Main
         NodeList nodeList = xmlReader.GetNodes(doc);       // extract the nodes into a NodeList
 
         Calculate calculate = new Calculate();
-
         calculate.getDistance(nodeList, city1, city2);
 
     }

@@ -39,7 +39,7 @@ public class Search
 
     public ArrayList template(NodeList nodeList, String pattern)
     {
-        Store<Node> store = new Store<Node>(nodeList);
+        myNodeList<Node> store = new myNodeList<Node>(nodeList);
         Map<String, String> items = new HashMap<>();
 
         int k = 0;
