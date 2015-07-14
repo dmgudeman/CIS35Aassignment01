@@ -31,7 +31,11 @@ public class Main {
         Document doc = xmlReader.ReadXML();
         NodeList nodeList = xmlReader.GetNodes(doc);       // extract the nodes into a NodeList
         Search search = new Search(nodeList);
+       // xmlReader.obtainSpecificData(search.sortedNodes(nodeList, search.template(nodeList, "City")), 1, "Lattitude");
         xmlReader.showArrayList(search.sortedNodes(nodeList, search.template(nodeList, "City")));
+
+
+
      //   System.out.println(Math.round(Calculate.haversine(44.38, 46.6, 100.28, 94.32)) + " miles");
      //   xmlReader.showNode(nodeList, 1088, "Latitude");
         Calculate.getDistance(nodeList, city1, city2);

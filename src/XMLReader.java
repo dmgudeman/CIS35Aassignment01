@@ -126,4 +126,29 @@ public class XMLReader
             e.printStackTrace();
         }
     }
+    public void obtainSpecificData (ArrayList<Node> list, int index, String tagName)
+    {
+        try {
+            int x = list.get(index).getChildNodes().getLength();
+            for (int i = 0; i < x; i++)
+            {
+                Node child = list.get(index);
+                if (child.getNodeType() == Node.ELEMENT_NODE)
+                    if list.get(i).
+                {
+                    Element eElement = (Element) child;
+
+                    System.out.println("Latitude : " + eElement.getElementsByTagName(tagName).item(0).getTextContent());
+                    System.out.println("\n");
+                }
+            }
+
+            System.out.println("----------------------------");
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }
