@@ -28,12 +28,15 @@ public class Search
         };
     }
 
-    public <T extends Comparable>Search(NodeList nodeList)
+    public <T extends Comparable> Search(NodeList nodeList)
     {
         this.nodeLists = nodeList;
     }
 
-    public <T extends Comparable>Search(){}
+    public <T extends Comparable> Search()
+    {
+    }
+
     public ArrayList template(NodeList nodeList, String pattern)
     {
         Store<Node> store = new Store<Node>(nodeList);
@@ -54,7 +57,7 @@ public class Search
                     if (n.getNodeType() == Node.ELEMENT_NODE)
                     {
 
-                            Element place = (Element) n;
+                        Element place = (Element) n;
                         if (place.getTagName() == pattern)
 
                             items.put(place.getTextContent(), place.getTagName());
@@ -68,56 +71,7 @@ public class Search
     }
 
 
-    public ArrayList sortedNodes(NodeList nodeList, ArrayList sortedItemList )
-    {
 
-        ArrayList<Node> cityList = new ArrayList<>();
-        ArrayList<Node> cityStateList = new ArrayList<>();
-        for (int i = 0; i < sortedItemList.size(); i++)
-        {
-            String pattern = (String) sortedItemList.get(i);
-            for (int j = 0; j < nodeList.getLength(); j++)
-            {
-                Node child = nodeList.item(j);
-                if (child.getNodeType() == Node.ELEMENT_NODE)
-                {
-                    Element eElement = (Element) child;
-
-                    String match = eElement.getElementsByTagName("City").item(0).getTextContent();
-                    if (match.compareTo(pattern)== 0)
-                    {
-                        cityList.add(child);
-                    }
-                }
-            }
-
-        }
-        return cityList;
-    }
-    public void showNodeList(NodeList nodeList)
-    {
-        try {
-            for (int i = 0; i < nodeList.getLength(); i++)
-            {
-                Node child = nodeList.item(i);
-                if (child.getNodeType() == Node.ELEMENT_NODE)
-                {
-                    Element eElement = (Element) child;
-
-                    System.out.println("Latitude : " + eElement.getElementsByTagName("Latitude").item(0).getTextContent());
-                    System.out.println("Longitude : " + eElement.getElementsByTagName("Longitude").item(0).getTextContent());
-                    System.out.println("City : " + eElement.getElementsByTagName("City").item(0).getTextContent());
-                    System.out.println("State : " + eElement.getElementsByTagName("State").item(0).getTextContent());
-                }
-            }
-
-            System.out.println("----------------------------");
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     public int binarySearch(ArrayList arrayList, String city)
     {
@@ -125,45 +79,13 @@ public class Search
         index = Collections.binarySearch(arrayList, city);
         return index;
     }
-    public double getLatitude(NodeList nodeList, int index)
-    {
-       Node node = nodeList.item(index);
-
-        for (int i = 0; i < node.getChildNodes().getLength(); i++)
-        {
-          //  System.out.println(node.getChildNodes().item(1));
-        }
-       return 2.0;
-    }
-    public ArrayList<Node> arrayListOfNodes(NodeList nodeList)
-    {
-        ArrayList arrayList = new ArrayList();
-        try {
-            for (int i = 0; i < nodeList.getLength(); i++)
-            {
-                Node child = nodeList.item(i);
-                if (child.getNodeType() == Node.ELEMENT_NODE)
-                {
-                    Element eElement = (Element) child;
-
-                    arrayList.add(child);
-                }
-            }
-
-            System.out.println("----------------------------");
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return arrayList;
-    }
 
     public String specificDataString(NodeList nodeList, ArrayList<String> arraylist, int index, String latOrLong)
     {
         String cityName = arraylist.get(index);
         String answer = "";
-        try {
+        try
+        {
             for (int i = 0; i < nodeList.getLength(); i++)
             {
                 Node child = nodeList.item(i);
@@ -171,25 +93,18 @@ public class Search
                 {
                     Element eElement = (Element) child;
 
-                   // if (cityName == eElement.getElementsByTagName("City").item(0).getTextContent())
-                 //   {
-                  //      answer = eElement.getElementsByTagName(latOrLong).item(0).getTextContent();
-                 //   }
-
 
                     if (cityName == eElement.getElementsByTagName("City").item(0).getTextContent())
                     {
-                        answer =  eElement.getElementsByTagName(latOrLong).item(0).getTextContent();
+                        answer = eElement.getElementsByTagName(latOrLong).item(0).getTextContent();
 
                     }
 
                 }
             }
 
-            System.out.println("----------------------------");
-            System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + answer);
-
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             e.printStackTrace();
         }
         return answer;

@@ -17,8 +17,6 @@ public class Calculate
     public Calculate()
     {
     }
-    // make this a member function of some class
-
 
     public double haversine(double dlatitude1, double dlongitude1, double dlatitude2, double dlongitude2)
     {
@@ -68,6 +66,7 @@ public class Calculate
         System.out.println("The distance from " + city1 + " to " + city2 + " is " + distance + " miles.");
         System.out.println("\n");
         System.out.println("\n");
+
         return null;
     }
 }

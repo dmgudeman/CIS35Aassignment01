@@ -12,15 +12,17 @@ import java.util.Scanner;
 /**
  * Created by davidgudeman on 7/8/15.
  */
-public class Main {
+public class Main
+{
 
-    public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
+    public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException
+    {
 
         String city1, city2;
 
         Scanner in = new Scanner(System.in);
         System.out.println("Enter first City");
-        city1 =in.nextLine();
+        city1 = in.nextLine();
 
         System.out.println("Enter second City");
         city2 = in.nextLine();
@@ -30,11 +32,8 @@ public class Main {
         XMLReader xmlReader = new XMLReader(sfile);
         Document doc = xmlReader.ReadXML();
         NodeList nodeList = xmlReader.GetNodes(doc);       // extract the nodes into a NodeList
-        Search search = new Search();
 
-
-
-          Calculate calculate = new Calculate();
+        Calculate calculate = new Calculate();
 
         calculate.getDistance(nodeList, city1, city2);
 
