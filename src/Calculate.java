@@ -12,11 +12,15 @@ import static java.lang.Math.*;
 
 public class Calculate
 {
-    static double RADIUS = 3959;
+    double RADIUS = 3959;
+
+    public Calculate()
+    {
+    }
     // make this a member function of some class
 
 
-    public static double haversine(double dlatitude1, double dlongitude1, double dlatitude2, double dlongitude2)
+    public double haversine(double dlatitude1, double dlongitude1, double dlatitude2, double dlongitude2)
     {
         dlongitude1 = -dlongitude1;
         dlongitude2 = -dlongitude2;
@@ -32,66 +36,38 @@ public class Calculate
         return distance;
     }
 
-    public static double getNodeValue(NodeList nodeList, int index, String tagname)
+    public  String getDistance(NodeList nodelist, String city1, String city2)
     {
-        double value = 0.0;
-        try
-        {
-            Node child = nodeList.item(index);
+        Search search = new Search(nodelist);
+        String lat1, lat2, long1, long2;
+        double latitude1, latitude2, longitude1, longitude2;
+        double answer = 0;
 
-            if (child.getNodeType() == Node.ELEMENT_NODE)
-            {
-                Element eElement = (Element) child;
-                if (eElement.getElementsByTagName(tagname) != null)
+        int city1Index = search.binarySearch(search.template(nodelist, "City"), city1);
 
-                    value = Double.parseDouble(eElement.getElementsByTagName(tagname).item(0).getTextContent());
-            }
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        return value;
+        lat1 = search.specificDataString(nodelist, search.template(nodelist, "City"), city1Index, "Latitude");
+        long1 = search.specificDataString(nodelist, search.template(nodelist, "City"), city1Index, "Longitude");
+
+        int city2Index = search.binarySearch(search.template(nodelist, "City"), city2);
+
+        lat2 = search.specificDataString(nodelist, search.template(nodelist, "City"), city2Index, "Latitude");
+        long2 = search.specificDataString(nodelist, search.template(nodelist, "City"), city2Index, "Longitude");
+
+        latitude1 = Double.parseDouble(lat1);
+        longitude1 = Double.parseDouble(long1);
+
+        latitude2 = Double.parseDouble(lat2);
+        longitude2 = Double.parseDouble(long2);
+
+        answer = haversine(latitude1, longitude1, latitude2, longitude2);
+        DecimalFormat df = new DecimalFormat("#");
+        String distance = (df.format(answer));
+
+
+        System.out.println("\n");
+        System.out.println("The distance from " + city1 + " to " + city2 + " is " + distance + " miles.");
+        System.out.println("\n");
+        System.out.println("\n");
+        return null;
     }
-
-    public static String  getDistance(NodeList nodelist, String city1, String city2)
-   {
-      Search search = new Search(nodelist);
-       String lat1, lat2, long1, long2;
-       double latitude1, latitude2, longitude1, longitude2;
-       double answer = 0;
-
-       int city1Index = search.binarySearch(search.template(nodelist, "City"), city1);
-       System.out.println(search.binarySearch(search.template(nodelist, "City"), city1)+"XXXXXXXXXXXXXXXXXXXXXXXXXXX");
-
-         System.out.println((search.specificDataString(nodelist, search.template(nodelist, "City"), city1Index, "Latitude"))+ "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-         lat1 = search.specificDataString(nodelist, search.template(nodelist, "City"), city1Index, "Latitude");
-         long1 = search.specificDataString(nodelist, search.template(nodelist, "City"), city1Index, "Longitude");
-
-          int city2Index = search.binarySearch(search.template(nodelist,"City"), city2);
-
-         lat2 = search.specificDataString(nodelist, search.template(nodelist, "City"), city2Index, "Latitude");
-         long2 = search.specificDataString(nodelist, search.template(nodelist, "City"), city2Index, "Longitude");
-
-          latitude1 = Double.parseDouble(lat1);
-           longitude1 = Double.parseDouble(long1);
-
-       latitude2 = Double.parseDouble(lat2);
-       longitude2 = Double.parseDouble(long2);
-
-     //   latitude1 = getNodeValue(nodelist, index1, "Latitude");
-    //    latitude2 = getNodeValue(nodelist, index2, "Latitude");
-     //   longitude1 = getNodeValue(nodelist, index1, "Longitude");
-      //  longitude2 = getNodeValue(nodelist, index2, "Longitude");
-
-      answer = haversine(latitude1, longitude1, latitude2, longitude2);
-      DecimalFormat df = new DecimalFormat("#");
-       String distance  = (df.format(answer));
-
-
-      System.out.println("\n");
-      System.out.println("The distance from " + city1 + " to " + city2 + " is " +  distance + " miles.");
-       System.out.println("\n");
-       System.out.println("\n");
-      return null;
-   }
 }
