@@ -41,6 +41,7 @@ public class Main
         Document doc = xmlReader.ReadXML();
         NodeList nodeList = xmlReader.GetNodes(doc);
 
+        Gen<Double> iOb;
         Calculate calculate = new Calculate();
         calculate.getDistance(nodeList, city1, city2);
 
