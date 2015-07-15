@@ -7,12 +7,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ *
  * Created by davidgudeman on 7/12/15.
  */
 public class Search
 {
-    NodeList nodeLists;
 
+    //anonymous class that my IDE provided to implement NodeList
+    NodeList nodeLists;
     {
         nodeLists = new NodeList()
         {
@@ -133,7 +135,7 @@ public class Search
     }
 
     // method to parse the input into two groups defined by a / seperator
-    // This extracts the city to be used in sord funcitons
+    // This extracts the city to be used in sord functions
     public String parseInput(String line)
     {
         String answer = "";
@@ -155,5 +157,6 @@ public class Search
         }
         return answer;
     }
+
 }
 

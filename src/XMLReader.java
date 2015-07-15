@@ -10,14 +10,20 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
+////import java.io.File;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+//import java.util.ArrayList;
+//import java.util.List;
+//import java.util.regex.Matcher;
+//i//mport java.util.regex.Pattern;
+
+/**
+ * Takes a string name of a xml text file can return a Nodelist
+ */
 
 public class XMLReader
 {
@@ -30,6 +36,7 @@ public class XMLReader
         this.sfile = sfile;
     }
 
+    // takes in xml file parses it into nodes
     public Document ReadXML() throws ParserConfigurationException, IOException, SAXException
     {
         try
@@ -45,24 +52,24 @@ public class XMLReader
         }
         return doc;
     }
-
+    // allow for retreval of the nodes
     public NodeList GetNodes(Document doc)
     {
         NodeList nList = doc.getElementsByTagName("Location");
-      //  Element root = doc.getDocumentElement();
         for (int i = 0; i < nList.getLength(); i++)
         {
             Node child = nList.item(i);
             if (child.getNodeType() == Node.ELEMENT_NODE)
             {
                 Element eElement = (Element) child;
-
             }
         }
         return nList;
     }
 
-    public void showNodeList(NodeList nodeList)
+
+ /* ************************Everything below only for testing***********************************************************
+  public void showNodeList(NodeList nodeList)
     {
         try
         {
@@ -141,5 +148,5 @@ public class XMLReader
 
     }
 
-
+*/
 }

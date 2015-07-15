@@ -5,11 +5,11 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.lang.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.LinkedList;
+//import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Pattern;
+//import java.util.regex.Pattern;
 import java.util.regex.*;
 /**
  * CIS35A assignment01
