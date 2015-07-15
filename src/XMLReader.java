@@ -1,25 +1,21 @@
-/**
- * Created by davidgudeman on 7/9/15.
- */
+
 import jdk.internal.org.xml.sax.SAXException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-////import java.io.File;
-
-
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.regex.Matcher;
-//i//mport java.util.regex.Pattern;
+
+/**
+ * The input functions of the program. The readXML method takes a text xml
+ * file and returns a document of nodes.
+ *
+ * The GetNoces method makes the nodes available
+ * Created by davidgudeman on 7/9/15.
+ */
 
 /**
  * Takes a string name of a xml text file can return a Nodelist
@@ -52,6 +48,7 @@ public class XMLReader
         }
         return doc;
     }
+
     // allow for retreval of the nodes
     public NodeList GetNodes(Document doc)
     {

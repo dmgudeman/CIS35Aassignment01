@@ -1,14 +1,14 @@
+import org.w3c.dom.NodeList;
+import static java.lang.Math.*;
+
 /**
  *
- * Class that performs calculations.
+ * Class that performs has two methods to calculate the distance between
+ * two point.  It takes a generic datatype. The haversine computation is
+ * in its own method.
+ *
  * Created by davidgudeman on 7/13/15.
  */
-
-import org.w3c.dom.NodeList;
-
-import java.text.DecimalFormat;
-
-import static java.lang.Math.*;
 
 public class Calculate
 {
@@ -28,8 +28,6 @@ public class Calculate
      * @param Gen<T> dlongitude2
      * @return String distance
      */
-
-
     private String haversine(Gen<Double> dlatitude1, Gen<Double>  dlongitude1, Gen<Double>  dlatitude2, Gen<Double>  dlongitude2)
     {
         String answer;
