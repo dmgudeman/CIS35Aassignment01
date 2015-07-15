@@ -13,7 +13,7 @@ import java.io.IOException;
  * The input functions of the program. The readXML method takes a text xml
  * file and returns a document of nodes.
  *
- * The GetNoces method makes the nodes available
+ * The GetNodes method makes the nodes available
  * Created by davidgudeman on 7/9/15.
  */
 
