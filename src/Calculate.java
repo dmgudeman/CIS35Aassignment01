@@ -1,4 +1,6 @@
 /**
+ *
+ * Class that performs calculations.
  * Created by davidgudeman on 7/13/15.
  */
 
@@ -12,26 +14,38 @@ public class Calculate
 {
     Double RADIUS = 3959.0;
 
+    public Calculate() {}  // Constructor
+
+    /**
+     * uses the Haversine method to calculate the distance between two points given their
+     * coordinates
+     *
+     * It takes in the coordinates as generics of the Gen class and returns the distance
+     * as a string.
+     * @param Gen<T> dlatitude1
+     * @param Gen<T> dlongitude1
+     * @param Gen<T> dlatitude2
+     * @param Gen<T> dlongitude2
+     * @return String distance
+     */
 
 
-    public Calculate()
-    {
-    }
-
-    public String haversine(Gen<Double> dlatitude1, Gen<Double>  dlongitude1, Gen<Double>  dlatitude2, Gen<Double>  dlongitude2)
+    private String haversine(Gen<Double> dlatitude1, Gen<Double>  dlongitude1, Gen<Double>  dlatitude2, Gen<Double>  dlongitude2)
     {
         String answer;
+        // unwrap the arguments to primitives
         double lat1 = dlatitude1.getob().doubleValue();
         double lat2 = dlatitude2.getob().doubleValue();
         double long1 = dlongitude1.getob().doubleValue();
         double long2 = dlongitude2.getob().doubleValue();
 
-
+        // convert to radians
         double dLatitude = Math.toRadians(lat2 - lat1);
         double dLongitude = Math.toRadians(long1 - long2);
         lat1 = Math.toRadians(lat1);
         lat2 = Math.toRadians(lat2);
 
+        // calculate distance and return a string
         double nA = pow(sin(dLatitude / 2.0), 2.0) + cos(lat1) * cos(lat2) * pow(sin(dLongitude / 2.0), 2.0);
         double nC = 2.0 * atan2(sqrt(nA), sqrt(1.0 - nA));
         double distance = RADIUS * nC;
@@ -39,6 +53,13 @@ public class Calculate
         return answer = ""+ distance1;
     }
 
+    /**
+     * Takes in
+     * @param nodelist
+     * @param city1
+     * @param city2
+     * @return
+     */
     public  String getDistance(NodeList nodelist, String city1, String city2)
     {
         Search search = new Search(nodelist);

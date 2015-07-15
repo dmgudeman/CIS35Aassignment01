@@ -1,4 +1,5 @@
 /**
+ * A generic class to define the variable type for the program
  * Created by davidgudeman on 7/14/15.
  */
 class Gen<T>
@@ -23,5 +24,7 @@ class Gen<T>
         {
         System.out.println("Type of T is " + ob.getClass().getName());
         }
+
+
  }
 
