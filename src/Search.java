@@ -30,16 +30,23 @@ public class Search
         };
     }
 
+    // Constructors
     public <T extends Comparable> Search(NodeList nodeList)
     {
         this.nodeLists = nodeList;
     }
 
-    public <T extends Comparable> Search()
-    {
-    }
+    public <T extends Comparable> Search(){}
 
-    public ArrayList template(NodeList nodeList, String pattern)
+    /**
+     * Used to create a string of city names to use to get the sorted index.
+     * It takes in a unsorted NodeList and returns a sorted Arraylist of strings.
+     * @param nodeList
+     * @param pattern
+     * @return String Arraylist
+     */
+
+    public ArrayList<String> template(NodeList nodeList, String pattern)
     {
         myNodeList<Node> store = new myNodeList<Node>(nodeList);
         Map<String, String> items = new HashMap<>();
@@ -72,9 +79,6 @@ public class Search
         return sortedCityStrings;
     }
 
-
-
-
     public int binarySearch(ArrayList arrayList, String city)
     {
         int index;
@@ -94,24 +98,21 @@ public class Search
                 if (child.getNodeType() == Node.ELEMENT_NODE)
                 {
                     Element eElement = (Element) child;
-
-
                     if (cityName == eElement.getElementsByTagName("City").item(0).getTextContent())
                     {
                         answer = eElement.getElementsByTagName(latOrLong).item(0).getTextContent();
 
                     }
-
                 }
             }
-
         } catch (Exception e)
         {
             e.printStackTrace();
         }
         return answer;
     }
-
+    // method to parse the input into two groups defined by a / seperator
+    // This extracts the city to be used in sord funcitons
     public String parseInput(String line)
     {
         String answer = "";
@@ -130,7 +131,6 @@ public class Search
         else
         {
             System.out.println("NO MATCH");
-
         }
         return answer;
     }
