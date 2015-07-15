@@ -48,37 +48,41 @@ public class Search
 
     public ArrayList<String> template(NodeList nodeList, String pattern)
     {
-        myNodeList<Node> store = new myNodeList<Node>(nodeList);
+        // Map is used in this method to facilitate sorting
         Map<String, String> items = new HashMap<>();
 
-        int k = 0;
         for (int i = 0; i < nodeList.getLength(); i++)
         {
-            Node l = nodeList.item(i);
-            if (l.getNodeType() == Node.ELEMENT_NODE)
+            Node nl = nodeList.item(i); // iterate through the node list
+            if (nl.getNodeType() == Node.ELEMENT_NODE) // Element nodes only
             {
-
-                Element location = (Element) l;
-                NodeList dataList = location.getChildNodes();
+                // iterate through the child nodes
+                Element cn = (Element) nl;
+                NodeList dataList = cn.getChildNodes();
                 for (int j = 0; j < dataList.getLength(); j++)
                 {
+                    // collect the nodes into NodeList
                     Node n = dataList.item(j);
                     if (n.getNodeType() == Node.ELEMENT_NODE)
                     {
-
                         Element place = (Element) n;
+                        // filter to see if matches the sorted arraylist node
+                        // at that location
                         if (place.getTagName() == pattern)
-
+                            // if so put it into the Hashmap as key value pair
                             items.put(place.getTextContent(), place.getTagName());
                     }
                 }
             }
         }
+        // collect the output of the sored Hashmap in a new ArrayList
         ArrayList<String> sortedCityStrings = new ArrayList(items.keySet());
         Collections.sort(sortedCityStrings);
         return sortedCityStrings;
     }
 
+    // binary search function to look up values by city name
+    // uses Java native lexographic comparator
     public int binarySearch(ArrayList arrayList, String city)
     {
         int index;
@@ -86,20 +90,36 @@ public class Search
         return index;
     }
 
-    public String specificDataString(NodeList nodeList, ArrayList<String> arraylist, int index, String latOrLong)
+    /**
+     * This returns a string latitude or longitude of known city.
+     *
+     * Takes in an unsorted nodelist, a sorted String arraylist for a template, a known index to determine
+     * city to focus on, and a string to specify lat or long.
+     * @param: nodeList usnorted
+     * @param: String sortedStringList
+     * @param: int index
+     * @param: String latOrLong
+     * @return: String latitude or longitude
+     */
+   public String specificDataString(NodeList nodeList, ArrayList<String> sortedStringList, int index, String latOrLong)
     {
-        String cityName = arraylist.get(index);
+        // collect city name from sorted string list
+        String cityName = sortedStringList.get(index);
         String answer = "";
         try
         {
+            // iterate through the nodelist
             for (int i = 0; i < nodeList.getLength(); i++)
             {
+                // iterate through the child nodes of the node
                 Node child = nodeList.item(i);
                 if (child.getNodeType() == Node.ELEMENT_NODE)
                 {
                     Element eElement = (Element) child;
+                    // compare the the template city with childnode city
                     if (cityName == eElement.getElementsByTagName("City").item(0).getTextContent())
                     {
+                        // return the lat or long for that city
                         answer = eElement.getElementsByTagName(latOrLong).item(0).getTextContent();
 
                     }
@@ -111,6 +131,7 @@ public class Search
         }
         return answer;
     }
+
     // method to parse the input into two groups defined by a / seperator
     // This extracts the city to be used in sord funcitons
     public String parseInput(String line)

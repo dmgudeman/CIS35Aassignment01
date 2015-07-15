@@ -49,7 +49,7 @@ public class XMLReader
     public NodeList GetNodes(Document doc)
     {
         NodeList nList = doc.getElementsByTagName("Location");
-        Element root = doc.getDocumentElement();
+      //  Element root = doc.getDocumentElement();
         for (int i = 0; i < nList.getLength(); i++)
         {
             Node child = nList.item(i);
